@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HW_Oct1_XamarinLab.MainPage">
+
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="champlain.jpg" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+            <Entry x:Name="nameEntry" Text="{ Binding employee.Name }" Placeholder="Enter Name" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <Entry x:Name="salaryEntry" Text="{ Binding Path=employee.Salary}" Keyboard="Numeric"  Placeholder="Enter Salary" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+            <RadioButton x:Name="dayTime" IsChecked="{ Binding employee.Day }" Margin="0" GroupName="time" Content="Day time" Grid.Row="4" Grid.Column="0"/>
+            <RadioButton x:Name="evening" IsChecked="{ Binding employee.Evening }" Margin="0" GroupName="time" Content="Evening time" Grid.Row="5" Grid.Column="0" />
+
+            <CheckBox  x:Name="hockeyBox" IsChecked="{ Binding Path=employee.Hockey }" Margin="0" Grid.Row="6" Grid.Column="0"/>
+            <Label Padding="0,10,0,0"  Text="Plays Hockey" Grid.Row="6" Grid.Column="1" FontSize="14"/>
+
+            <CheckBox x:Name="basketballBox" IsChecked="{ Binding Path=employee.Basketball }" Margin="0" Grid.Row="7" Grid.Column="0"/>
+            <Label Padding="0,10,30,0"   Text="Plays Basketball" Grid.Row="7" Grid.Column="1" FontSize="14"/>
+
+            <CheckBox x:Name="noneBox" IsChecked="{ Binding Path=employee.None }" Margin="0" Grid.Row="8" Grid.Column="0"/>
+            <Label Padding="0,10,0,0" Text="Plays None" Grid.Row="8" Grid.Column="1" FontSize="14"/>
+
+            <Button Text="Add" Clicked="AddClicked" Grid.Row="9" Grid.ColumnSpan="2" Grid.Column="0"/>
+            <Button Text="Display" Clicked="DisplayClicked" Grid.Row="10" Grid.ColumnSpan="2" Grid.Column="0"/>
+            <Label HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Employee List:" TextColor="Blue" TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ClickCommand}" CommandParameter="https://xamarin.com" />
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+        </Grid>
+    </StackLayout>
+
+</ContentPage>
