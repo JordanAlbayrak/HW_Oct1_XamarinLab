@@ -3,9 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HW_Oct1_XamarinLab.MainPage">
 
+    <ScrollView>
     <StackLayout>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -23,7 +26,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Image Source="champlain.jpg" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <Image x:Name="imageChamp"  Source="champlain.jpg" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2"/>
 
             <Entry x:Name="nameEntry" Text="{ Binding employee.Name }" Placeholder="Enter Name" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
             <Entry x:Name="salaryEntry" Text="{ Binding Path=employee.Salary}" Keyboard="Numeric"  Placeholder="Enter Salary" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
@@ -42,7 +45,10 @@
 
             <Button Text="Add" Clicked="AddClicked" Grid.Row="9" Grid.ColumnSpan="2" Grid.Column="0"/>
             <Button Text="Display" Clicked="DisplayClicked" Grid.Row="10" Grid.ColumnSpan="2" Grid.Column="0"/>
-            <Label HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2">
+            <Button Text="Update" Clicked="UpdateClicked" Grid.Row="11" Grid.ColumnSpan="2" Grid.Column="0"/>
+            <Button Text="Delete" Clicked="DeleteClicked" Grid.Row="12" Grid.ColumnSpan="2" Grid.Column="0"/>
+
+            <Label HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Employee List:" TextColor="Blue" TextDecorations="Underline">
@@ -53,8 +59,29 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-
         </Grid>
+
+
+        <CollectionView x:Name="collectionView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Grid Padding="10" RowDefinitions="Auto, *">
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" FontSize="Medium"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Salary}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Hockey}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding Basketball}" TextColor="Silver" FontSize="Small"/>
+                                <Label Grid.Row="0" Grid.Column="4" Text="{Binding None}" TextColor="Silver" FontSize="Small"/>
+
+                                <Label Grid.Row="0" Grid.Column="5" Text="{Binding ID}" TextColor="Silver" FontSize="Small"/>
+
+                            </Grid>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
     </StackLayout>
+</ScrollView>
 
 </ContentPage>

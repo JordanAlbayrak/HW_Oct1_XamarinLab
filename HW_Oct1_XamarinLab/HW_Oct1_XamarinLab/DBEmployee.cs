@@ -24,5 +24,26 @@ namespace HW_Oct1_XamarinLab
         {
             return _database.InsertAsync(employee);
         }
+        public Task<Employee> GetItemAsync(int id)
+        {
+            return _database.Table<Employee>().Where(i => i.ID == id).FirstOrDefaultAsync();
+        }
+
+        public Task<int> DeleteItemAsync(Employee employee)
+        {
+            return _database.DeleteAsync(employee);
+        }
+        public Task<int> UpdatePersonAsync(Employee student)
+        {
+            if (student.ID != 0)
+            {
+                return _database.UpdateAsync(student);
+            }
+            else
+            {
+                return _database.InsertAsync(student);
+            }
+        }
+
     }
 }
